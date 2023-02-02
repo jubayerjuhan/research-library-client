@@ -36,6 +36,8 @@ export default function ResearchCard({ post }) {
     setExpanded(!expanded);
   };
 
+  if (!post) return <>Loading...</>;
+
   return (
     <Card
       sx={{ width: 345, height: "100%", cursor: "pointer", minHeight: 450 }}
@@ -43,7 +45,7 @@ export default function ResearchCard({ post }) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {post.author.name?.slice(0, 1)}
+            {post.author?.name?.slice(0, 1)}
           </Avatar>
         }
         action={
@@ -51,7 +53,7 @@ export default function ResearchCard({ post }) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={post.author.name}
+        title={post.author?.name}
         subheader={moment(post.createdAt).format("LL")}
       />
       <CardMedia
